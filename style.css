@@ -1,0 +1,465 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    background: rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(6px);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.container-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    min-width: 750px;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    white-space: nowrap;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.logo h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+    margin: 0;
+    font-weight: normal;
+}
+
+.icon {
+    font-size: 1.5rem;
+    color: white;
+}
+
+nav {
+    overflow: hidden;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-family: 'Dosis', sans-serif;
+}
+
+nav ul li {
+    color: white;
+    font-family: sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+nav ul li:hover {
+    color: #ffdddd;
+}
+
+.welcome-married {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    color: white;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./img/1-1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.savedate {
+    position: absolute;
+}
+
+.welcome-married h4 {
+    font-size: 1.5rem;
+    font-family: 'Dosis', sans-serif;
+    color: #f5f9f8;
+    text-transform: uppercase;
+}
+
+.welcome-married h2 {
+    font-size: 4rem;
+    color: #fff;
+    padding: 4px 20px 2px;
+    display: inline-block;
+    position: relative;
+    font-family: 'Great Vibes', cursive;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
+.welcome-married p {
+    color: #f1fffc;
+    font-size: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    margin: 0;
+    line-height: 1;
+}
+
+.day-married {
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    max-width: 1140px;
+    justify-self: center;
+}
+
+.day-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background-image: linear-gradient(rgba(94, 154, 140, 0.88)), url('./img/coundown-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container-day-title {
+    padding: 18px 0;
+}
+
+.container-day-title h2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 45px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 17.25px 45px;
+    margin-left: 23px;
+    margin-right: 23px;
+    font-weight: normal;
+    font-family: "Great Vibes", cursive;
+
+}
+
+.container-day-title span {
+    font-family: "Dosis", cursive;
+    font-size: 1.2rem
+}
+
+
+.day-timer {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background: #5e9a8d;
+    padding: 14px 5px 20px 20px;
+    font-size: 60px;
+    font-family: 'Great Vibes', cursive;
+    color: white;
+}
+
+.day-timer span {
+    font-family: 'Dosis';
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.timer-day,
+.timer-hours,
+.timer-minutes,
+.timer-seconds {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 17.25px 45px;
+    margin-left: 23px;
+    margin-right: 23px;
+    font-weight: normal;
+    align-items: center;
+}
+
+.ours {
+    padding: 100px 0px 100px 0px;
+}
+
+.container-ours {
+    justify-items: center;
+    place-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.container-ours h2 {
+    position: relative;
+    font-size: 55px;
+    font-family: 'Great Vibes', cursive;
+    color: #649e93;
+    padding-bottom: 38px;
+    margin-bottom: 30px;
+    margin-top: 0px;
+    font-weight: 100;
+}
+
+.container-ours h2::after {
+    background-image: url('./img/title-bg.png');
+    position: absolute;
+    content: "";
+    width: 230px;
+    height: 59px;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.img-couples {
+    display: flex;
+    padding-top: 20px;
+    max-width: 1140px;
+}
+
+.img-couples div {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    text-align: center;
+}
+
+.img-couples img {
+    border: none;
+    border-radius: inherit;
+    position: relative;
+    margin-bottom: 0px;
+    padding-bottom: 30px;
+    height: auto;
+    max-width: 100%;
+    box-shadow: none;
+}
+
+
+.img-couples h4 {
+    font-family: 'Dosis', sans-serif;
+    margin: 0;
+    padding: 10px 0;
+    font-size: 21px;
+    color: #5e9a8e;
+}
+
+.img-couples p {
+    margin-bottom: 0px;
+    padding-bottom: 20px;
+    padding-top: 5px;
+    font-size: 1.125rem;
+    color: #838383;
+    line-height: 1.6em;
+    margin: 0 0 1.5em;
+}
+
+.middle-img img {
+    height: -webkit-fill-available;
+}
+
+.our-history {
+    padding: 0 0 70px 0;
+}
+
+.container-history {
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    max-width: 1140px;
+    justify-self: center;
+    margin: auto;
+}
+
+.container-history h2 {
+    position: relative;
+    font-size: 55px;
+    font-family: 'Great Vibes', cursive;
+    color: #649e93;
+    padding-bottom: 38px;
+    margin-bottom: 30px;
+    margin-top: 0px;
+    font-weight: 100;
+}
+
+.container-history h2::after {
+    background-image: url('./img/title-bg.png');
+    position: absolute;
+    content: "";
+    width: 230px;
+    height: 59px;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Línea de tiempo */
+
+.timeline {
+    position: relative;
+    max-width: 1140px;
+    margin: auto;
+    padding: 50px 0;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    top: 44px;
+    left: 50%;
+    height: 97%;
+    width: 3px;
+    background: #E8EFED;
+}
+
+.timeline-item {
+    padding: 20px 30px;
+    position: relative;
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.timeline-item.left {
+    left: 0;
+    justify-content: flex-end;
+    text-align: right;
+    padding-right: 55px;
+}
+
+.timeline-item.right {
+    left: 50%;
+    justify-content: flex-start;
+    text-align: left;
+    padding-left: 55px;
+}
+
+.timeline-item img {
+    width: 90%;
+    height: auto;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.timeline-item.left img {
+    margin-right: 0;
+    margin-left: 20px;
+}
+
+.timeline-item .content {
+    max-width: 300px;
+}
+
+.timeline-item h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #649e93;
+}
+
+.timeline-item .date {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.timeline-item p {
+    font-size: 14px;
+    color: #444;
+}
+
+.timeline-item a {
+    font-size: 12px;
+    color: #649e93;
+    text-decoration: none;
+}
+
+/* Íconos decorativos */
+
+.icon-center {
+    z-index: 100;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.icon-center img {
+    width: 50px;
+    height: 50px;
+}
+
+.line-icons-top,
+.line-icons-bottom {
+    position: relative;
+    z-index: 100;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.line-icons-top img,
+.line-icons-bottom img {
+
+    width: 40px;
+    height: 40px;
+}
+
+.content h2 {
+    margin-top: 20px;
+    margin-bottom: 2px;
+    font-family: 'Dosis', sans-serif;
+    font-size: 25px;
+    color: #5e9a8d;
+    font-weight: normal;
+}
+
+.content span {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    color: #000;
+    font-size: 15px;
+}
+
+.content p {
+    margin-bottom: 3px;
+    padding-top: 0px;
+    font-size: 1.125rem;
+    color: #838383;
+    line-height: 1.6em;
+}
