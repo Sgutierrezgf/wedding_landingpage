@@ -4,6 +4,7 @@
     padding: 0;
 }
 
+/* Header */
 header {
     position: fixed;
     top: 0;
@@ -81,6 +82,8 @@ nav ul li:hover {
     color: #ffdddd;
 }
 
+
+/* seccion 1 */
 .welcome-married {
     display: flex;
     justify-content: center;
@@ -88,7 +91,7 @@ nav ul li:hover {
     text-align: center;
     height: 100vh;
     color: white;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./img/1-1.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./img/carrusel-1.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -126,6 +129,7 @@ nav ul li:hover {
     line-height: 1;
 }
 
+/* seccion 2 */
 .day-married {
     display: flex;
     justify-content: center;
@@ -201,6 +205,7 @@ nav ul li:hover {
     align-items: center;
 }
 
+/* seccion 3 */
 .ours {
     padding: 100px 0px 100px 0px;
 }
@@ -262,6 +267,7 @@ nav ul li:hover {
     height: auto;
     max-width: 100%;
     box-shadow: none;
+    object-fit: cover;
 }
 
 
@@ -285,8 +291,82 @@ nav ul li:hover {
 
 .middle-img img {
     height: -webkit-fill-available;
+    object-fit: cover;
 }
 
+/* seccion 4 */
+.big-day {
+    background-image: url('./img/first-travel.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+.opacity {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(69, 110, 102, 0.9) 100%);
+    z-index: 1;
+}
+
+.container-big-day {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.container-big-day h2 {
+    font-size: 55px;
+    color: #fff;
+    font-family: 'Great Vibes', cursive;
+    font-weight: normal;
+}
+
+.container-big-day p {
+    font-size: 18px;
+    padding: 20px 50px 30px;
+    line-height: 1.6em;
+    color: #fff;
+    max-width: 700px;
+    margin: auto;
+    margin: auto;
+    font-family: 'Dosis', sans-serif;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-group button {
+    padding: 12px 28px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    background-color: white;
+    color: #456E66;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Dosis', sans-serif;
+}
+
+.btn-group button:hover {
+    background-color: #649e93;
+    color: white;
+}
+
+/* seccion 5 */
 .our-history {
     padding: 0 0 70px 0;
 }
@@ -325,8 +405,6 @@ nav ul li:hover {
     background-position: center;
     background-repeat: no-repeat;
 }
-
-/* Línea de tiempo */
 
 .timeline {
     position: relative;
@@ -370,9 +448,10 @@ nav ul li:hover {
 
 .timeline-item img {
     width: 90%;
-    height: auto;
+    height: 50vh;
     border-radius: 5px;
     margin-right: 20px;
+    object-fit: cover;
 }
 
 .timeline-item.left img {
@@ -381,7 +460,7 @@ nav ul li:hover {
 }
 
 .timeline-item .content {
-    max-width: 300px;
+    max-width: 450px;
 }
 
 .timeline-item h3 {
@@ -408,14 +487,12 @@ nav ul li:hover {
     text-decoration: none;
 }
 
-/* Íconos decorativos */
-
 .icon-center {
     z-index: 100;
     position: relative;
     width: 100%;
     text-align: center;
-    margin: 20px 0;
+    margin: -50px 0;
 }
 
 .icon-center img {
@@ -428,7 +505,7 @@ nav ul li:hover {
     position: relative;
     z-index: 100;
     text-align: center;
-    margin: 20px 0;
+    margin: 0 0;
 }
 
 .line-icons-top img,
@@ -462,4 +539,448 @@ nav ul li:hover {
     font-size: 1.125rem;
     color: #838383;
     line-height: 1.6em;
+}
+
+.birds {
+    position: absolute;
+    top: 50%;
+    right: -30px;
+    width: 60px;
+    height: 60px;
+    margin-left: -28px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 60px;
+    border-radius: 50%;
+    background: #fff;
+    content: "\f108";
+    font-family: "Flaticon";
+    border: 3px solid #d9ece7;
+}
+
+.icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border: 4px solid #d9ece7;
+    border-radius: 50%;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+.icon-wrapper img {
+    width: 45px;
+    height: 45px;
+}
+
+/* seccion 6 */
+.container-when-where {
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    max-width: 1140px;
+    justify-self: center;
+    margin: auto;
+}
+
+.container-when-where h2 {
+    position: relative;
+    font-size: 55px;
+    font-family: 'Great Vibes', cursive;
+    color: #649e93;
+    padding-bottom: 38px;
+    margin-bottom: 30px;
+    margin-top: 0px;
+    font-weight: 100;
+}
+
+.container-when-where h2::after {
+    background-image: url('./img/title-bg.png');
+    position: absolute;
+    content: "";
+    width: 230px;
+    height: 59px;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.event-block {
+    max-width: 1140px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.event-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.event-grid.reverse {
+    direction: rtl;
+}
+
+.event-grid.reverse>* {
+    direction: ltr;
+}
+
+.event-grid img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    max-height: 450px;
+    object-fit: cover;
+}
+
+.event-info h2 {
+    font-size: 25px;
+    color: #649e93;
+    padding-bottom: 15px;
+}
+
+.event-info span {
+    color: #575757;
+    font-size: 16px;
+}
+
+.event-info p {
+    margin: 0px;
+    padding-bottom: 22px;
+    padding-right: 22px;
+    padding-top: 10px;
+    font-size: 1.125rem;
+    color: #838383;
+    line-height: 1.6em;
+}
+
+.event-info a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #649e93;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.map,
+.calendar {
+    color: #9cc5be;
+    padding-right: 5px;
+}
+
+.event-time {
+    padding-bottom: 5px;
+}
+
+.location {
+    padding-bottom: 15px;
+}
+
+/* seccion 7 */
+.info-extra {
+    background-color: #f8f8f8;
+    padding: 60px 20px;
+    text-align: center;
+    font-family: 'Dosis', sans-serif;
+}
+
+.container-info {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.container-info h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 55px;
+    color: #649e93;
+    margin-bottom: 20px;
+    position: relative;
+    font-weight: normal;
+}
+
+.container-info h2::after {
+    content: "";
+    background-image: url('./img/title-bg.png');
+    position: absolute;
+    width: 230px;
+    height: 59px;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.info-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.info-box {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    text-align: left;
+    border: 1px solid #9cc5be;
+    flex: 1 1 45%;
+    min-width: 300px;
+}
+
+.info-box.full {
+    flex: 0 1 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.info-box h3 {
+    font-size: 1.4rem;
+    color: #649e93;
+    margin-bottom: 10px;
+    font-family: 'Dosis', sans-serif;
+}
+
+.info-box p,
+.info-box ul {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.6em;
+    margin-bottom: 10px;
+}
+
+.info-box ul {
+    padding-left: 20px;
+    list-style: disc;
+}
+
+.form-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #649e93;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-link:hover {
+    background-color: #517f78;
+    transform: translateY(-2px);
+}
+
+/* seccion 8 */
+.form {
+    position: relative;
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+    padding: 100px 0px 100px 0px;
+    background-attachment: fixed;
+    background-image: url(https://wpocean.com/wp/lavelo/wp-content/uploads/2021/06/contact-bg.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.form-opacity {
+    background-color: transparent;
+    background-image: linear-gradient(180deg, #649E9399 0%, #649E939E 100%);
+    opacity: 1;
+    transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+    inset: 0;
+    position: absolute;
+}
+
+.form-container {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    background: #ffffffdd;
+    padding: 40px;
+    border-radius: 12px;
+    z-index: 2;
+    text-align: center;
+}
+
+.form-container h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 55px;
+    color: #649e93;
+    margin-bottom: 20px;
+    position: relative;
+    font-weight: normal;
+}
+
+.form-container p {
+    margin-bottom: 30px;
+    font-size: 18px;
+    color: #5a5858;
+    font-family: 'Dosis';
+}
+
+.guest-form .form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.guest-form input,
+.guest-form select,
+.guest-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    font-family: inherit;
+}
+
+.guest-form .form-row input,
+.guest-form .form-row select {
+    flex: 1;
+    min-width: 45%;
+}
+
+.guest-form textarea {
+    width: 100%;
+    height: 100px;
+    resize: none;
+    margin-bottom: 20px;
+}
+
+.guest-form button {
+    padding: 12px 25px;
+    background-color: #649e93;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.guest-form button:hover {
+    background-color: #527e76;
+}
+
+/* seccion 9 */
+.gifts {
+    padding: 100px 0px 0px 0px;
+}
+
+.container-gifts {
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    max-width: 1140px;
+    justify-self: center;
+    margin: auto;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-gifts h2 {
+    position: relative;
+    font-size: 55px;
+    font-family: 'Great Vibes', cursive;
+    color: #649e93;
+    padding-bottom: 38px;
+    margin-bottom: 30px;
+    margin-top: 0px;
+    font-weight: 100;
+
+}
+
+.container-gifts h2::after {
+    background-image: url('./img/title-bg.png');
+    position: absolute;
+    content: "";
+    width: 230px;
+    height: 59px;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container-gifts p {
+    font-size: 1.125rem;
+    color: #838383;
+    line-height: 1.6em;
+    margin: 0 0 1.5em;
+    font-family: 'Dosis';
+}
+
+/* seccion 10 */
+.thanks {
+    background-image: url('./img/first-travel.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+.thanks-opacity {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(69, 110, 102, 0.9) 100%);
+    z-index: 1;
+}
+
+.container-thanks {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 10px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    /* borde blanco */
+    border-radius: 15px;
+    backdrop-filter: blur(3px);
+}
+
+.thanks-inner {
+    background: rgba(94, 154, 142, .5);
+    /* fondo interno más opaco */
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+.thanks-inner h2 {
+    font-size: 55px;
+    color: #fff;
+    font-family: 'Great Vibes', cursive;
+    font-weight: normal;
+    margin: 0;
+}
+
+.thanks-inner p {
+    font-size: 18px;
+    margin-top: 20px;
+    line-height: 1.6em;
+    color: #fff;
+    font-family: 'Dosis', sans-serif;
 }
