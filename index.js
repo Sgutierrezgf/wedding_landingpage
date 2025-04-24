@@ -7,14 +7,18 @@ window.onscroll = function () {
     }
 };
 
-const hamburger = document.getElementById("hamburger");
-const navMenu = document.getElementById("nav-menu");
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
 
-hamburger.addEventListener("click", () => {
-    navMenu.classList.toggle("active");
+hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
 });
 
-const weddingDate = new Date("2025-08-16T15:00:00").getTime();
+document.querySelectorAll('#nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+    });
+});
 
 const countdown = () => {
     const now = new Date().getTime();
@@ -36,17 +40,17 @@ const countdown = () => {
     document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
 };
 
-countdown(); // Inicial
-setInterval(countdown, 1000); // Actualiza cada segundo
+countdown();
+setInterval(countdown, 1000);
 
 document.getElementById("guestForm").addEventListener("submit", function (event) {
     event.preventDefault();
 
     var asistenciaValue = document.querySelector('select[name="asistencia"]').value;
 
-    // Validar si se seleccionó una opción de asistencia
+
     if (asistenciaValue === "¿Vas a asistir a la boda?") {
-        event.preventDefault(); // Evita que el formulario se envíe
+        event.preventDefault();
         alert("Por favor, selecciona si asistirás o no a la boda.");
         return;
     }
@@ -57,13 +61,13 @@ document.getElementById("guestForm").addEventListener("submit", function (event)
         formObject[key] = value;
     });
 
-    // Asegurarse de incluir el valor de "asistencia"
+
     var asistenciaField = document.querySelector('select[name="asistencia"]');
     if (asistenciaField) {
-        formObject["asistencia"] = asistenciaField.value; // Asegura que "asistencia" esté siempre en el formObject
+        formObject["asistencia"] = asistenciaField.value;
     }
 
-    console.log(formObject); // Verifica que los datos del formulario estén correctos
+    console.log(formObject);
 
     fetch("https://script.google.com/macros/s/AKfycbzgEwfGvk7YWB76U6GrQNrdB_E3Obo4HGMI6SvNcdmS1mpn0ULZ6E6cLeB0N_e7bCyr/exec", {
         method: "POST",
@@ -72,20 +76,20 @@ document.getElementById("guestForm").addEventListener("submit", function (event)
     })
         .then(response => response.text())
         .then(data => {
-            console.log(data); // Verifica la respuesta del Web App
+            console.log(data);
 
-            // Mostrar mensaje dependiendo de la asistencia
+
             if (asistenciaValue === "Sí") {
-                document.getElementById("successMessage").style.display = "block"; // Muestra el mensaje de éxito para asistencia
-                document.getElementById("noAttendanceMessage").style.display = "none"; // Asegura que el mensaje de no asistencia no se muestre
+                document.getElementById("successMessage").style.display = "block";
+                document.getElementById("noAttendanceMessage").style.display = "none";
             } else {
-                document.getElementById("noAttendanceMessage").style.display = "block"; // Muestra el mensaje de no asistencia
-                document.getElementById("successMessage").style.display = "none"; // Asegura que el mensaje de éxito no se muestre
+                document.getElementById("noAttendanceMessage").style.display = "block";
+                document.getElementById("successMessage").style.display = "none";
             }
 
-            document.getElementById("guestForm").reset(); // Reinicia los campos del formulario
+            document.getElementById("guestForm").reset();
 
-            // Oculta los mensajes después de 3 segundos
+
             setTimeout(function () {
                 document.getElementById("successMessage").style.display = "none";
                 document.getElementById("noAttendanceMessage").style.display = "none";
@@ -95,22 +99,55 @@ document.getElementById("guestForm").addEventListener("submit", function (event)
             console.error("Error:", error);
         });
 });
-// Habilitar o deshabilitar los campos dependiendo de la asistencia
+
 document.getElementById("asistencia").addEventListener("change", function () {
     var asistenciaValue = this.value;
     var formElements = document.querySelectorAll("#guestForm input, #guestForm select");
 
-    // Habilita todos los campos si la respuesta es "Sí"
+
     if (asistenciaValue === "Sí") {
         formElements.forEach(function (element) {
-            element.disabled = false; // habilitar todos los campos
+            element.disabled = false;
         });
     } else if (asistenciaValue === "No") {
-        // Deshabilita todos los campos excepto el de nombre y el select de asistencia
+
         formElements.forEach(function (element) {
             if (element.name !== "nombre" && element.name !== "asistencia") {
-                element.disabled = true; // deshabilitar los campos que no sean "nombre" ni "asistencia"
+                element.disabled = true;
             }
         });
     }
 });
+
+const images = [
+    './img/carrusel-1.jpeg',
+    './img/carrusel-2.jpeg',
+    './img/carrusel-3.jpeg'
+];
+
+let currentIndex = 0;
+const section = document.getElementById('hero-carousel');
+
+function updateBackground() {
+    section.style.backgroundImage =
+        `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('${images[currentIndex]}')`;
+}
+
+function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateBackground();
+}
+
+function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateBackground();
+}
+
+document.getElementById('nextBtn').addEventListener('click', nextImage);
+document.getElementById('prevBtn').addEventListener('click', prevImage);
+
+
+setInterval(nextImage, 5000);
+
+
+updateBackground();

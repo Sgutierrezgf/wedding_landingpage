@@ -37,29 +37,38 @@
 
         <nav id="nav-menu">
           <ul>
-            <li>Inicio</li>
-            <li>Pareja</li>
-            <li>Historia</li>
-            <li>Evento</li>
-            <li>Galería</li>
-            <li>RSVP</li>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#pareja">Pareja</a></li>
+            <li><a href="#historia">Historia</a></li>
+            <li><a href="#evento">Evento</a></li>
+            <li><a href="#info">Información</a></li>
+            <li><a href="#rsvp">RSVP</a></li>
           </ul>
         </nav>
       </div>
     </header>
 
     <main>
-      <section class="welcome-married">
+      <section class="welcome-married" id="hero-carousel" id="inicio">
+        <button class="carousel-btn left" id="prevBtn">
+          <i class="fa fa-arrow-left arrows" aria-hidden="true"></i>
+        </button>
+
         <img
           class="heart-img"
           src="./img/cercle.png"
           alt="Decoración corazón"
         />
+
         <div class="savedate">
           <h4>Nos casamos</h4>
           <h2>Reserva la fecha</h2>
           <p>16/08/2025</p>
         </div>
+
+        <button class="carousel-btn right" id="nextBtn">
+          <i class="fa fa-arrow-right arrows" aria-hidden="true"></i>
+        </button>
       </section>
 
       <section class="day-married">
@@ -91,7 +100,7 @@
         </div>
       </section>
 
-      <section class="ours">
+      <section class="ours" id="pareja">
         <div class="container-ours">
           <h2>Pareja feliz</h2>
           <div class="img-couples">
@@ -99,8 +108,7 @@
               <img src="./img/bf.jpeg" alt="boyfriend" />
               <h4>Edwim</h4>
               <p>
-                Ingeniero, creativo, buen elista, jugador de Counter, papá
-                gatuno.
+                Ingeniero, creativo, benelista, jugador de Counter, papá gatuno.
               </p>
             </div>
 
@@ -130,13 +138,18 @@
             nada ✨.
           </p>
           <div class="btn-group">
-            <button>RSVP</button>
-            <button>Ubicación</button>
+            <a href="#rsvp" class="btn">RSVP</a>
+            <a
+              href="https://maps.google.com/?q=Iglesia+la+purísima+concepción,+Envigado+Antioquia"
+              target="_blank"
+              class="btn"
+              >Ubicación</a
+            >
           </div>
         </div>
       </section>
 
-      <section class="our-history">
+      <section class="our-history" id="historia">
         <div class="container-history">
           <h2>Sobre nosotros</h2>
         </div>
@@ -280,7 +293,7 @@
         </div>
       </section>
 
-      <section class="where-when">
+      <section class="where-when" id="evento">
         <div class="container-when-where">
           <h2>Cuando y donde</h2>
         </div>
@@ -299,8 +312,8 @@
                 <span>Sabado, 16 Agosto de 2025, 3:00PM - 4:00 PM</span>
               </div>
               <p>
-                Es un hecho establecido que el lector se distraerá con el
-                contenido legible de una página al mirar su diseño...
+                Dirección Loma el Chocho, Cl. 36 Sur #23 - 15, Loma la
+                Esmeralda, Envigado, Antioquia
               </p>
               <a
                 href="https://maps.google.com/?q=Iglesia+la+purísima+concepción,+Envigado+Antioquia"
@@ -317,16 +330,13 @@
               <h2>Celebración</h2>
               <div class="event-time">
                 <i class="fa fa-map-marker map" aria-hidden="true"></i>
-                <span>forest campestre, Envigado Antioquia</span>
+                <span>Forest campestre, Envigado Antioquia</span>
               </div>
               <div class="location">
                 <i class="fa fa-calendar calendar" aria-hidden="true"></i>
-                <span>Sabado, 16 Agosto de 2025, 5:00 PM</span>
+                <span>Sábado, 16 Agosto de 2025, 5:00 PM</span>
               </div>
-              <p>
-                Es un hecho establecido que el lector se distraerá con el
-                contenido legible de una página al mirar su diseño...
-              </p>
+              <p>Ubicado a 15 minutos del parque principal de envigado</p>
               <a
                 href="https://www.google.com/maps/place/Forest+campestre/@6.1360461,-75.5668226,15.25z/data=!4m6!3m5!1s0x8e4683664b3effb3:0xf13f8c16c0fbbd33!8m2!3d6.1321942!4d-75.5537637!16s%2Fg%2F11ggs7hl2n?entry=ttu&g_ep=EgoyMDI1MDQyMS4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
@@ -338,7 +348,7 @@
         </div>
       </section>
 
-      <section class="info-extra">
+      <section class="info-extra" id="info">
         <div class="container-info">
           <h2>Información importante</h2>
 
@@ -390,11 +400,15 @@
           </div>
         </div>
       </section>
-      <section class="form">
+
+      <section class="form" id="rsvp">
         <div class="form-opacity"></div>
         <div class="form-container">
           <h2>Se nuestro invitado</h2>
-          <p>Por favor reservar antes del 31 de junio de 2025</p>
+          <p>
+            ¡Estamos contando los días para celebrar contigo! Si puedes
+            acompañarnos, por favor confirma antes del 1 de julio.
+          </p>
           <form class="guest-form" id="guestForm">
             <div class="form-row">
               <input
@@ -427,7 +441,7 @@
               </select>
             </div>
 
-            <button type="submit">Enviar invitación</button>
+            <button type="submit">Confirmar asistencia</button>
           </form>
 
           <div

@@ -10,6 +10,7 @@ html {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    scroll-behavior: smooth;
     /* evitar desplazamientos horizontales */
 }
 
@@ -83,16 +84,18 @@ nav ul {
     font-family: 'Dosis', sans-serif;
 }
 
-nav ul li {
+nav ul li a {
     color: white;
     font-size: 0.95rem;
     font-weight: 500;
     white-space: nowrap;
     cursor: pointer;
     transition: color 0.3s ease;
+    text-decoration: none;
 }
 
-nav ul li:hover {
+
+nav ul li a:hover {
     color: #ffdddd;
 }
 
@@ -162,6 +165,43 @@ nav ul li:hover {
     margin: 0;
 }
 
+.carousel-btn {
+    background-color: rgba(127, 214, 195, 0.3);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    z-index: 10;
+    border: 5px solid transparent;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: opacity 0.3s ease;
+}
+
+.arrows {
+    color: white;
+}
+
+.carousel-btn:hover {
+    background-color: #1e7b67;
+}
+
+.carousel-btn.left {
+    left: 20px;
+    margin-left: 10px;
+}
+
+.carousel-btn.right {
+    right: 20px;
+    margin-right: 10px;
+}
+
+.welcome-married:hover .carousel-btn {
+    opacity: 1;
+    pointer-events: auto;
+}
 
 /* seccion 2 */
 .day-married {
@@ -369,14 +409,14 @@ nav ul li:hover {
 }
 
 .container-big-day h2 {
-    font-size: 55px;
+    font-size: 3rem;
     color: #fff;
     font-family: 'Great Vibes', cursive;
     font-weight: normal;
 }
 
 .container-big-day p {
-    font-size: 18px;
+    font-size: 1rem;
     padding: 20px 50px 30px;
     line-height: 1.6em;
     color: #fff;
@@ -392,7 +432,7 @@ nav ul li:hover {
     gap: 20px;
 }
 
-.btn-group button {
+.btn-group .btn {
     padding: 12px 28px;
     font-size: 16px;
     border: none;
@@ -403,9 +443,10 @@ nav ul li:hover {
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: 'Dosis', sans-serif;
+    text-decoration: none;
 }
 
-.btn-group button:hover {
+.btn-group .btn:hover {
     background-color: #649e93;
     color: white;
 }
@@ -944,7 +985,7 @@ nav ul li:hover {
 
 /* seccion 9 */
 .gifts {
-    padding: 100px 0px 0px 0px;
+    padding: 0 0px 0px 0px;
 }
 
 .container-gifts {
@@ -989,13 +1030,19 @@ nav ul li:hover {
     font-size: 1.125rem;
     color: #838383;
     line-height: 1.6em;
-    margin: 0 0 1.5em;
     font-family: 'Dosis';
+    margin: 0 auto 1.5em;
+    max-width: 600px;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #9cc5be;
+    border-radius: 10px;
+    background-color: #f9f9f9;
 }
 
 /* seccion 10 */
 .thanks {
-    background-image: url('./img/thanks2.jpeg');
+    background-image: url('./img/thanks5.jpeg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1066,6 +1113,11 @@ nav ul li:hover {
 @media (max-width: 768px) {
 
     header {
+        background: white;
+    }
+
+    header.scrolled {
+        position: fixed;
         background: white;
     }
 
@@ -1163,29 +1215,37 @@ nav ul li:hover {
         direction: ltr;
     }
 
-    nav#nav-menu {
-        display: none;
+    .container-header {
+        position: relative;
+        z-index: 1000;
+    }
+
+    #nav-menu {
         position: absolute;
-        top: 70px;
+        /* o fixed si quieres que flote en pantalla */
+        top: 100%;
         right: 0;
         width: 100%;
-        background-color: #1e7b67;
-        padding: 1rem 0;
-        z-index: 999;
+        background-color: white;
+        /* para que no se mezcle con lo de abajo */
+        z-index: 9999;
+        /* bien alto */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* opcional: para que se note */
     }
 
-    nav#nav-menu.active {
+    #nav-menu.active {
         display: block;
-    }
-
-    nav#nav-menu ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
     }
 
     .hamburger {
         display: block;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 0;
     }
 
     .container-header {
@@ -1214,5 +1274,11 @@ nav ul li:hover {
 
     .day-timer {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 380px) {
+    .container-big-day p {
+        padding: 0;
     }
 }
