@@ -21,7 +21,7 @@
     <title>Edwin & Heidy</title>
   </head>
   <body>
-    <header>
+    <header id="header">
       <div class="container-header">
         <div class="logo">
           <a href="#">
@@ -30,21 +30,31 @@
             <h2>Heidy</h2>
           </a>
         </div>
-        <nav>
+
+        <button class="hamburger" id="hamburger">
+          <i class="fa fa-bars"></i>
+        </button>
+
+        <nav id="nav-menu">
           <ul>
-            <li>Home</li>
+            <li>Inicio</li>
             <li>Pareja</li>
             <li>Historia</li>
             <li>Evento</li>
             <li>Galería</li>
-            <li>Rvsp</li>
+            <li>RSVP</li>
           </ul>
         </nav>
       </div>
     </header>
+
     <main>
       <section class="welcome-married">
-        <img class="heart-img" src="./img/cercle.png" alt="heart" />
+        <img
+          class="heart-img"
+          src="./img/cercle.png"
+          alt="Decoración corazón"
+        />
         <div class="savedate">
           <h4>Nos casamos</h4>
           <h2>Reserva la fecha</h2>
@@ -57,39 +67,39 @@
           <div class="container-day-title">
             <h2>
               <span>Estamos eperando por.....</span>
-              El gran dia
+              El gran día
             </h2>
           </div>
         </div>
         <div class="day-timer">
           <div class="timer-day">
-            300
-            <span>days</span>
+            <span id="days">0</span>
+            <span>días</span>
           </div>
           <div class="timer-hours">
-            09
-            <span>hours</span>
+            <span id="hours">0</span>
+            <span>horas</span>
           </div>
           <div class="timer-minutes">
-            50
-            <span>minutes</span>
+            <span id="minutes">0</span>
+            <span>minutos</span>
           </div>
           <div class="timer-seconds">
-            45
-            <span>seconds</span>
+            <span id="seconds">0</span>
+            <span>segundos</span>
           </div>
         </div>
       </section>
 
       <section class="ours">
         <div class="container-ours">
-          <h2>Feliz Pareja</h2>
+          <h2>Pareja feliz</h2>
           <div class="img-couples">
             <div class="person">
               <img src="./img/bf.jpeg" alt="boyfriend" />
               <h4>Edwim</h4>
               <p>
-                Hola, Ingeniero, creativo, benelista, jugador de counter, papá
+                Ingeniero, creativo, buen elista, jugador de Counter, papá
                 gatuno.
               </p>
             </div>
@@ -101,7 +111,7 @@
               <img src="./img/gr.jpeg" alt="girlfriend" />
               <h4>Heidy</h4>
               <p>
-                Hola, Ingeniera, artista, ilustradora, lectora de fantasía, mamá
+                Ingeniera, artista, ilustradora, lectora de fantasía, mamá
                 gatuna.
               </p>
             </div>
@@ -114,14 +124,14 @@
         <div class="container-big-day">
           <h2>Bienvenidos a nuestro gran día</h2>
           <p>
-            🌾 ¡Hola, hola! Antes de empezar… te pedimos que por fa leas con
-            calma y hasta el final 💌 Hemos preparado esta invitación con mucho
+            🌾 ¡Hola, hola! Antes de empezar… te pedimos que, por fa, leas con
+            calma y hasta el final 💌. Hemos preparado esta invitación con mucho
             amor y hay varios detalles importantes para que nadie se pierda de
-            nada ✨
+            nada ✨.
           </p>
           <div class="btn-group">
             <button>RSVP</button>
-            <button>Location</button>
+            <button>Ubicación</button>
           </div>
         </div>
       </section>
@@ -143,15 +153,14 @@
             <div class="content">
               <h2>Nuestra primera cita</h2>
               <span class="date"
-                >No nos acordamos pero paso(problamente abril 2012)</span
+                >No nos acordamos, pero pasó (probablemente abril 2012)</span
               >
               <p>
-                Nos conocimos en la universidad como compañeros de la ingeniería
-                en sistemas, y nos hicimos amigos, pero no fue hasta que
-                empezamos a trabajar en sura que empezamos a salir, nuestra
-                primera cita oficial fue poco pomposa fue en casa, compartiendo
-                una comida sencilla que hizo especial el comienzo de nuestra
-                historia.
+                Nos conocimos en la universidad como compañeros de Ingeniería en
+                Sistemas. Nos hicimos amigos, pero no fue hasta que empezamos a
+                trabajar en Sura que comenzamos a salir. Nuestra primera cita
+                oficial fue sencilla: en casa, compartiendo una comida que hizo
+                especial el comienzo de nuestra historia.
               </p>
             </div>
           </div>
@@ -165,15 +174,15 @@
 
           <!-- Evento 2 -->
           <div class="timeline-item right">
-            <img src="./img/travel2.jpeg" alt="Our First Date" />
+            <img src="./img/first-travel.jpeg" alt="Our First Date" />
             <div class="content">
               <h2>Nuestro primer viaje</h2>
-              <span class="date">un dia de noviembre de 2013</span>
+              <span class="date">Un día de noviembre de 2013</span>
               <p>
-                Fue para celebrar nuestro primer aniversario en el Choco Nuquí
-                para conocer las ballenitas, fue muy emocionante y lleno de
-                desconexión, vimos además delfines, cangrejos, y estuvimos
-                rodeados del naturaleza.
+                Fue para celebrar nuestro primer aniversario en Nuquí, Chocó,
+                para ver las ballenas. Fue muy emocionante y lleno de
+                desconexión. Vimos delfines, cangrejos y estuvimos rodeados de
+                naturaleza.
               </p>
             </div>
           </div>
@@ -187,14 +196,13 @@
 
           <!-- Evento 3 -->
           <div class="timeline-item left">
-            <img src="./img/adventures.jpeg" alt="Our Marriage Proposal" />
+            <img src="./img/travel2.jpeg" alt="Our Marriage Proposal" />
             <div class="content">
               <h2>Estranando pasaporte</h2>
               <span class="date">15/08/2021</span>
               <p>
-                Tuvimos la fortuna de salir a conocer Mexico, Dios nos dio ese
-                regalito, y pudimos conocer las playas de Tulum y vivir
-                aventuras.
+                Tuvimos la fortuna de conocer México. Dios nos dio ese regalito
+                y pudimos visitar las playas de Tulum y vivir muchas aventuras.
               </p>
             </div>
           </div>
@@ -208,15 +216,59 @@
 
           <!-- Evento 4 -->
           <div class="timeline-item right">
+            <img src="./img/adventures.jpeg" alt="Our Marriage Proposal" />
+            <div class="content">
+              <h2>Aventuras juntos</h2>
+              <span class="date"
+                >No nos acordamos, pero siempre son geniales</span
+              >
+              <p>
+                Más que pareja, siempre hemos sido grandes amigos. Nos encanta
+                divertirnos, hacernos bromas y disfrutar desde una partida de
+                cartas hasta un viaje inolvidable.
+              </p>
+            </div>
+          </div>
+
+          <!-- Corazón central -->
+          <div class="icon-center">
+            <div class="icon-wrapper">
+              <img src="./img/love-birds.png" alt="corazón central" />
+            </div>
+          </div>
+
+          <!-- Evento 4 -->
+          <div class="timeline-item lefht">
+            <img src="./img/thanks.jpeg" alt="Our Marriage Proposal" />
+            <div class="content">
+              <h2>Nuestro hogar</h2>
+              <span class="date"
+                >Desde que nos conocemos, hasta el infinito</span
+              >
+              <p>
+                Nuestro hogar es lo más lindo que tenemos. Nuestro gatihijo
+                Newton y nuestras plantitas son nuestro mayor amor.
+              </p>
+            </div>
+          </div>
+
+          <!-- Corazón central -->
+          <div class="icon-center">
+            <div class="icon-wrapper">
+              <img src="./img/love-birds.png" alt="corazón central" />
+            </div>
+          </div>
+
+          <!-- Evento 6 -->
+          <div class="timeline-item right">
             <img src="./img/proposal.jpeg" alt="Our Engagement" />
             <div class="content">
               <h2>Propuesta de matrimonio</h2>
-              <span class="date">un dia de noviembre 2023</span>
+              <span class="date">Un día de noviembre de 2023</span>
               <p>
-                Siempre hemos tenido una conexión especial como pareja con el
-                mar, y por eso el mar fue el principal testigo de nuestro
-                compromiso, fue divertido porque nada paso como se planeo, pero
-                sucedió de la manera más perfecta que pudo suceder.
+                Siempre hemos tenido una conexión especial con el mar, y fue
+                nuestro principal testigo. Nada salió como lo planeamos, pero
+                fue perfecto tal como ocurrió.
               </p>
             </div>
           </div>
@@ -235,7 +287,7 @@
 
         <div class="event-block">
           <div class="event-grid">
-            <img src="./img/ceremonia.jpeg" alt="Wedding Ceremony" />
+            <img src="./img/church.jpg" alt="Wedding Ceremony" />
             <div class="event-info">
               <h2>Ceremonia</h2>
               <div class="event-time">
@@ -244,20 +296,25 @@
               </div>
               <div class="location">
                 <i class="fa fa-calendar calendar" aria-hidden="true"></i>
-                <span>Sabado, 16 Agosto de 2025, 3:00PM - 5:00 PM</span>
+                <span>Sabado, 16 Agosto de 2025, 3:00PM - 4:00 PM</span>
               </div>
               <p>
                 Es un hecho establecido que el lector se distraerá con el
                 contenido legible de una página al mirar su diseño...
               </p>
-              <a href="#">Ver ubicación</a>
+              <a
+                href="https://maps.google.com/?q=Iglesia+la+purísima+concepción,+Envigado+Antioquia"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Ver ubicación</a
+              >
             </div>
           </div>
 
           <div class="event-grid reverse">
-            <img src="./img/recepcion.jpeg" alt="Wedding Party" />
+            <img src="./img/forest.jpeg" alt="Wedding Party" />
             <div class="event-info">
-              <h2>Recepcion</h2>
+              <h2>Celebración</h2>
               <div class="event-time">
                 <i class="fa fa-map-marker map" aria-hidden="true"></i>
                 <span>forest campestre, Envigado Antioquia</span>
@@ -270,7 +327,12 @@
                 Es un hecho establecido que el lector se distraerá con el
                 contenido legible de una página al mirar su diseño...
               </p>
-              <a href="#">Ver ubicación</a>
+              <a
+                href="https://www.google.com/maps/place/Forest+campestre/@6.1360461,-75.5668226,15.25z/data=!4m6!3m5!1s0x8e4683664b3effb3:0xf13f8c16c0fbbd33!8m2!3d6.1321942!4d-75.5537637!16s%2Fg%2F11ggs7hl2n?entry=ttu&g_ep=EgoyMDI1MDQyMS4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Ver ubicación</a
+              >
             </div>
           </div>
         </div>
@@ -282,7 +344,7 @@
 
           <div class="info-grid">
             <div class="info-box">
-              <h3>✨ Dress code</h3>
+              <h3>✨ Código de vestuario</h3>
               <p>
                 Queremos que se sientan parte de esta celebración tan especial,
                 así que les pedimos que vengan con su mejor estilo.
@@ -334,26 +396,56 @@
         <div class="form-container">
           <h2>Se nuestro invitado</h2>
           <p>Por favor reservar antes del 31 de junio de 2025</p>
-          <form class="guest-form">
+          <form class="guest-form" id="guestForm">
+            <!-- Nueva sección de radio buttons para asistencia -->
+            <!-- <div class="form-row">
+              <label for="asistirSi">
+                <input type="radio" id="asistirSi" name="asistencia" value="Si" required />
+                Sí, asistiré
+              </label>
+              <label for="asistirNo">
+                <input type="radio" id="asistirNo" name="asistencia" value="No" required />
+                No, no asistiré
+              </label>
+            </div> -->
+
+            <!-- Resto del formulario -->
             <div class="form-row">
-              <input type="text" placeholder="Your Name" required />
-              <input type="email" placeholder="Your Email" required />
+              <input
+                type="text"
+                name="nombre"
+                placeholder="Tu nombre"
+                required
+              />
+              <input
+                type="email"
+                name="correo"
+                placeholder="tu correo"
+                required
+              />
             </div>
             <div class="form-row">
-              <select required>
+              <select name="licor" required>
                 <option disabled selected>¿Prefieres Ron o Guaro?</option>
                 <option>Ron</option>
                 <option>Guaro</option>
                 <option>Ninguno</option>
               </select>
-              <select required>
+              <select name="vegetariano" required>
                 <option disabled selected>¿Deseas opción vegetariana?</option>
                 <option>Sí</option>
                 <option>No</option>
               </select>
             </div>
-            <button type="submit">Enviar invitacion</button>
+            <button type="submit">Enviar invitación</button>
           </form>
+
+          <div
+            id="successMessage"
+            style="display: none; color: green; margin-top: 20px"
+          >
+            ¡Gracias por confirmar tu asistencia 🎉!
+          </div>
         </div>
       </section>
 
@@ -381,5 +473,6 @@
         </div>
       </section>
     </main>
+    <script src="/index.js"></script>
   </body>
 </html>
