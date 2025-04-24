@@ -7,18 +7,20 @@ window.onscroll = function () {
     }
 };
 
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('nav-menu');
+// const hamburger = document.getElementById('hamburger');
+// const navMenu = document.getElementById('nav-menu');
 
-hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-});
+// hamburger.addEventListener('click', () => {
+//     navMenu.classList.toggle('active');
+// });
 
-document.querySelectorAll('#nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-    });
-});
+// document.querySelectorAll('#nav-menu a').forEach(link => {
+//     link.addEventListener('click', () => {
+//         navMenu.classList.remove('active');
+//     });
+// });
+
+const weddingDate = new Date("2025-08-16T15:00:00").getTime();
 
 const countdown = () => {
     const now = new Date().getTime();
@@ -40,8 +42,8 @@ const countdown = () => {
     document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
 };
 
-countdown();
-setInterval(countdown, 1000);
+countdown(); // Inicial
+setInterval(countdown, 1000); // Actualiza cada segundo
 
 document.getElementById("guestForm").addEventListener("submit", function (event) {
     event.preventDefault();
