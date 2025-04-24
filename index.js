@@ -42,8 +42,8 @@ const countdown = () => {
     document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
 };
 
-countdown(); // Inicial
-setInterval(countdown, 1000); // Actualiza cada segundo
+countdown();
+setInterval(countdown, 1000);
 
 document.getElementById("guestForm").addEventListener("submit", function (event) {
     event.preventDefault();
@@ -71,7 +71,7 @@ document.getElementById("guestForm").addEventListener("submit", function (event)
 
     console.log(formObject);
 
-    fetch("https://script.google.com/macros/s/AKfycbzgEwfGvk7YWB76U6GrQNrdB_E3Obo4HGMI6SvNcdmS1mpn0ULZ6E6cLeB0N_e7bCyr/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbxbbcY5Ds_OFPx64oj4BjVXICHBh1M7EaYJN1f_v50qECAEdXE-cSI3h_xYl512ZmocXQ/exec", {
         method: "POST",
         body: new URLSearchParams(formObject),
         mode: 'no-cors',
