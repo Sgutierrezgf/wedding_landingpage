@@ -884,6 +884,8 @@ nav ul li:hover {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
+    justify-content: center;
+    /* Centra los contenidos */
 }
 
 .guest-form input,
@@ -926,20 +928,6 @@ nav ul li:hover {
     background-color: #527e76;
 }
 
-.guest-form input[type="radio"],
-.guest-form label {
-    margin-right: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #649e93;
-}
-
-.guest-form .radio-container {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-    justify-content: flex-start;
-}
 
 .guest-form .form-row input[disabled],
 .guest-form .form-row select[disabled] {
@@ -947,7 +935,8 @@ nav ul li:hover {
     cursor: not-allowed;
 }
 
-.guest-form .success-message {
+/* Estilo para el mensaje de éxito */
+.success-message {
     display: none;
     color: green;
     margin-top: 20px;

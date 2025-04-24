@@ -390,26 +390,12 @@
           </div>
         </div>
       </section>
-
       <section class="form">
         <div class="form-opacity"></div>
         <div class="form-container">
           <h2>Se nuestro invitado</h2>
           <p>Por favor reservar antes del 31 de junio de 2025</p>
           <form class="guest-form" id="guestForm">
-            <!-- Nueva sección de radio buttons para asistencia -->
-            <!-- <div class="form-row">
-              <label for="asistirSi">
-                <input type="radio" id="asistirSi" name="asistencia" value="Si" required />
-                Sí, asistiré
-              </label>
-              <label for="asistirNo">
-                <input type="radio" id="asistirNo" name="asistencia" value="No" required />
-                No, no asistiré
-              </label>
-            </div> -->
-
-            <!-- Resto del formulario -->
             <div class="form-row">
               <input
                 type="text"
@@ -417,13 +403,9 @@
                 placeholder="Tu nombre"
                 required
               />
-              <input
-                type="email"
-                name="correo"
-                placeholder="tu correo"
-                required
-              />
+              <input type="email" name="correo" placeholder="tu correo" />
             </div>
+
             <div class="form-row">
               <select name="licor" required>
                 <option disabled selected>¿Prefieres Ron o Guaro?</option>
@@ -436,7 +418,15 @@
                 <option>Sí</option>
                 <option>No</option>
               </select>
+
+              <!-- Nuevo select para confirmar asistencia -->
+              <select name="asistencia" required id="asistencia">
+                <option disabled selected>¿Vas a asistir a la boda?</option>
+                <option value="Sí">Sí</option>
+                <option value="No">No</option>
+              </select>
             </div>
+
             <button type="submit">Enviar invitación</button>
           </form>
 
@@ -445,6 +435,13 @@
             style="display: none; color: green; margin-top: 20px"
           >
             ¡Gracias por confirmar tu asistencia 🎉!
+          </div>
+
+          <div
+            id="noAttendanceMessage"
+            style="display: none; color: red; margin-top: 20px"
+          >
+            ¡Gracias por tu respuesta, es una pena que no puedas asistir! 😞
           </div>
         </div>
       </section>
