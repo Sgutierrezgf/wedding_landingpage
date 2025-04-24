@@ -433,11 +433,7 @@
               <p>
                 Por favor, ayúdanos a organizar todo con amor confirmando tu
                 asistencia.<br />
-                Solo tienes que llenar el formulario que te dejamos aquí:<br />
-                📩
-                <a href="#" class="form-link" target="_blank"
-                  >Llenar formulario</a
-                >
+                Solo tienes que llenar el formulario que te dejamos aquí abajo
               </p>
               <p>En él podrás contarnos:</p>
               <ul>
@@ -464,6 +460,14 @@
           </p>
           <form class="guest-form" id="guestForm">
             <div class="form-row">
+              <!-- Nuevo select para confirmar asistencia -->
+              <select name="asistencia" required id="asistencia">
+                <option disabled selected>¿Vas a asistir a la boda?</option>
+                <option value="Sí">Sí</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+            <div class="form-row">
               <input
                 type="text"
                 name="nombre"
@@ -485,15 +489,7 @@
                 <option>Sí</option>
                 <option>No</option>
               </select>
-
-              <!-- Nuevo select para confirmar asistencia -->
-              <select name="asistencia" required id="asistencia">
-                <option disabled selected>¿Vas a asistir a la boda?</option>
-                <option value="Sí">Sí</option>
-                <option value="No">No</option>
-              </select>
             </div>
-
             <button type="submit">Confirmar asistencia</button>
           </form>
 
