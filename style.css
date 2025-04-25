@@ -29,7 +29,7 @@ header {
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(6px);
     box-sizing: border-box;
-    overflow: hidden;
+    /* overflow: hidden; */
     transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -116,7 +116,7 @@ nav ul li a:hover {
     height: 100vh;
     width: 100%;
     color: white;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./img/carrusel-1.jpeg');
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./img/carrusel-1.jpeg'); */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1213,28 +1213,45 @@ nav ul li a:hover {
         z-index: 1000;
     }
 
-    #nav-menu {
-        position: absolute;
-        top: 100%;
-        right: 0;
-        width: 100%;
-        background-color: white;
-        z-index: 9999;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    #nav-menu.active {
-        display: block;
-    }
-
     .hamburger {
         display: block;
     }
 
-    nav ul {
+    #nav-menu {
+        display: none;
+        position: fixed;
+        top: 70px;
+        /* debajo del header */
+        right: 0;
+        width: 80%;
+        max-width: 300px;
+        height: calc(100vh - 70px);
+        background: white;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+        padding: 20px;
+        z-index: 100;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    #nav-menu.active {
+        display: flex;
+    }
+
+    #nav-menu ul {
         flex-direction: column;
         gap: 20px;
-        padding: 20px 0;
+    }
+
+    #nav-menu ul li a {
+        color: #1e7b67;
+        font-size: 1.2rem;
+    }
+
+    /* Para que no se muestre el nav en línea en mobile */
+    nav ul {
+        flex-direction: column;
     }
 
     .container-header {

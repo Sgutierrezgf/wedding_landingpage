@@ -1,3 +1,4 @@
+// Scroll del header
 window.onscroll = function () {
     const header = document.getElementById('header');
     if (window.scrollY > 0) {
@@ -7,19 +8,28 @@ window.onscroll = function () {
     }
 };
 
-// const hamburger = document.getElementById('hamburger');
-// const navMenu = document.getElementById('nav-menu');
+// Menu hamburguesa
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
+const icon = hamburger.querySelector('i');
 
-// hamburger.addEventListener('click', () => {
-//     navMenu.classList.toggle('active');
-// });
+hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    icon.classList.toggle('fa-bars');
+    icon.classList.toggle('fa-times'); // ícono de cerrar (X)
+});
 
-// document.querySelectorAll('#nav-menu a').forEach(link => {
-//     link.addEventListener('click', () => {
-//         navMenu.classList.remove('active');
-//     });
-// });
+// Cerrar menú al hacer clic en un enlace
+const navLinks = navMenu.querySelectorAll('a');
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-times');
+    });
+});
 
+// Tiempo de espera
 const weddingDate = new Date("2025-08-16T15:00:00").getTime();
 
 const countdown = () => {
@@ -45,6 +55,7 @@ const countdown = () => {
 countdown();
 setInterval(countdown, 1000);
 
+// Envio de formulario
 document.getElementById("guestForm").addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -102,6 +113,7 @@ document.getElementById("guestForm").addEventListener("submit", function (event)
         });
 });
 
+// Validacion de asistencia
 document.getElementById("asistencia").addEventListener("change", function () {
     var asistenciaValue = this.value;
     var formElements = document.querySelectorAll("#guestForm input, #guestForm select");
