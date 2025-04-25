@@ -215,7 +215,7 @@ nav ul li a:hover {
     align-items: center;
     text-align: center;
     color: white;
-    background-image: linear-gradient(rgba(94, 154, 140, 0.88)), url('./img/coundown-bg.jpg');
+    background-image: linear-gradient(rgba(94, 154, 140, 0.88), rgba(94, 154, 140, 0.88)), url('./img/coundown-bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
