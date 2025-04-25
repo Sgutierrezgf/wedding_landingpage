@@ -133,6 +133,7 @@ document.getElementById("asistencia").addEventListener("change", function () {
     }
 });
 
+// Carrusel
 const images = [
     './img/carrusel-1.jpeg',
     './img/carrusel-2.jpeg',
@@ -142,9 +143,15 @@ const images = [
 let currentIndex = 0;
 const section = document.getElementById('hero-carousel');
 
+const bg = document.getElementById('carouselBg');
+
 function updateBackground() {
-    section.style.backgroundImage =
-        `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('${images[currentIndex]}')`;
+    bg.style.opacity = 0; // Comienza el desvanecimiento
+
+    setTimeout(() => {
+        bg.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('${images[currentIndex]}')`;
+        bg.style.opacity = 1; // Desvanece hacia la nueva imagen
+    }, 400); // Tiempo intermedio antes de mostrar la nueva imagen
 }
 
 function nextImage() {
