@@ -217,6 +217,11 @@ document.getElementById('openModalBtn').addEventListener('click', function () {
 });
 
 
+document.getElementById('closeModalBtn').addEventListener('click', function () {
+    document.getElementById('modal').style.display = 'none';
+    document.getElementById('openModalBtn').style.display = 'block';
+});
+
 
 //invitaciones
 const getParam = (param) => {

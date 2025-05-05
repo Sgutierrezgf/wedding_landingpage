@@ -1300,9 +1300,26 @@ nav ul li a:hover {
     opacity: 0;
 }
 
+.close-btn {
+    display: none;
+    /* Oculto por defecto */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: #1e7b67;
+    font-size: 2rem;
+    padding: 5px 10px;
+    border-radius: 50%;
+    z-index: 3;
+    cursor: pointer;
+}
+
 .error-border {
     border: 2px solid red;
 }
+
 
 
 @media (max-width:1129px) {
@@ -1481,6 +1498,10 @@ nav ul li a:hover {
 
     .carousel-dots {
         display: flex;
+    }
+
+    .close-btn {
+        display: block;
     }
 }
 
