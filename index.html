@@ -19,8 +19,18 @@
     />
     <link rel="stylesheet" href="./style.css" />
     <title>Edwin & Heidy</title>
+    <link rel="icon" href="./img/new_favicon.ico" type="image/x-icon" />
   </head>
   <body>
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-nombre" id="nombreInvitado"></div>
+        <img src="./img/invitacion.jpeg" alt="Invitación" id="modalImage" />
+      </div>
+    </div>
+    <button id="openModalBtn" style="display: none" class="open-modal-btn">
+      <img src="./img/buttonInvitation.jpg" alt="Abrir Modal" />
+    </button>
     <header id="header">
       <div class="container-header">
         <div class="logo">
@@ -73,6 +83,7 @@
         <button class="carousel-btn right" id="nextBtn">
           <i class="fa fa-arrow-right arrows" aria-hidden="true"></i>
         </button>
+        <div class="carousel-dots" id="carouselDots"></div>
       </section>
 
       <section class="day-married">
@@ -293,7 +304,7 @@
                 >Desde que nos conocemos, hasta el infinito</span
               >
               <p>
-                Nuestro hogar es lo más lindo que tenemos. Nuestro gathijo
+                Nuestro hogar es lo más lindo que tenemos. Nuestro gato-hijo
                 Newton y nuestras plantitas son nuestro mayor amor.
               </p>
             </div>
@@ -322,7 +333,7 @@
               <span class="date">Un día de noviembre de 2023</span>
               <p>
                 Siempre hemos tenido una conexión especial con el mar, y fue el
-                principal testigo de nuestrp compromiso. Nada salió como lo
+                principal testigo de nuestro compromiso. Nada salió como lo
                 planeamos, pero fue perfecto tal como ocurrió.
               </p>
             </div>
@@ -405,7 +416,7 @@
               <p>
                 <strong>Ellas:</strong> Look elegante, de preferencia vestido
                 largo.<br />
-                <strong>Ellos:</strong> Traje formal.
+                <strong>Ellos:</strong> Traje formal blazer.
               </p>
             </div>
 
@@ -450,37 +461,7 @@
             acompañarnos, por favor confirma antes del 1 de julio.
           </p>
           <form class="guest-form" id="guestForm">
-            <div class="form-row">
-              <!-- Nuevo select para confirmar asistencia -->
-              <select name="asistencia" required id="asistencia">
-                <option disabled selected>¿Vas a asistir a la boda?</option>
-                <option value="Sí">Sí</option>
-                <option value="No">No</option>
-              </select>
-            </div>
-            <div class="form-row">
-              <input
-                type="text"
-                name="nombre"
-                placeholder="Heidy o Edwin"
-                required
-              />
-              <input type="number" name="telefono" placeholder="Teléfono" />
-            </div>
-
-            <div class="form-row">
-              <select name="licor" required>
-                <option disabled selected>¿Prefieres Ron o Guaro?</option>
-                <option>Ron</option>
-                <option>Guaro</option>
-                <option>Ninguno</option>
-              </select>
-              <select name="vegetariano" required>
-                <option disabled selected>¿Deseas opción vegetariana?</option>
-                <option>Sí</option>
-                <option>No</option>
-              </select>
-            </div>
+            <div id="dynamicGuests"></div>
             <button type="submit">Confirmar asistencia</button>
           </form>
 
@@ -496,6 +477,16 @@
             style="display: none; color: red; margin-top: 20px"
           >
             Gracias por tu respuesta, es una pena que no puedas asistir. 😞
+          </div>
+          <div
+            id="mixedAttendanceMessage"
+            style="display: none; color: orange; margin-top: 20px"
+          >
+            Gracias a quienes asistirán. ¡Nos hará falta el resto! 🧡
+          </div>
+          <div id="errorMessage" class="error-message" style="display: none">
+            Por favor selecciona la asistencia (Sí o No) para todos los
+            invitados antes de enviar.
           </div>
         </div>
       </section>

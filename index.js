@@ -56,82 +56,82 @@ countdown();
 setInterval(countdown, 1000);
 
 // Envio de formulario
-document.getElementById("guestForm").addEventListener("submit", function (event) {
-    event.preventDefault();
+// document.getElementById("guestForm").addEventListener("submit", function (event) {
+//     event.preventDefault();
 
-    var asistenciaValue = document.querySelector('select[name="asistencia"]').value;
-
-
-    if (asistenciaValue === "¿Vas a asistir a la boda?") {
-        event.preventDefault();
-        alert("Por favor, selecciona si asistirás o no a la boda.");
-        return;
-    }
-
-    var formData = new FormData(this);
-    var formObject = {};
-    formData.forEach(function (value, key) {
-        formObject[key] = value;
-    });
+//     var asistenciaValue = document.querySelector('select[name="asistencia"]').value;
 
 
-    var asistenciaField = document.querySelector('select[name="asistencia"]');
-    if (asistenciaField) {
-        formObject["asistencia"] = asistenciaField.value;
-    }
+//     if (asistenciaValue === "¿Vas a asistir a la boda?") {
+//         event.preventDefault();
+//         alert("Por favor, selecciona si asistirás o no a la boda.");
+//         return;
+//     }
 
-    console.log(formObject);
-
-    fetch("https://script.google.com/macros/s/AKfycbxbbcY5Ds_OFPx64oj4BjVXICHBh1M7EaYJN1f_v50qECAEdXE-cSI3h_xYl512ZmocXQ/exec", {
-        method: "POST",
-        body: new URLSearchParams(formObject),
-        mode: 'no-cors',
-    })
-        .then(response => response.text())
-        .then(data => {
-            console.log(data);
+//     var formData = new FormData(this);
+//     var formObject = {};
+//     formData.forEach(function (value, key) {
+//         formObject[key] = value;
+//     });
 
 
-            if (asistenciaValue === "Sí") {
-                document.getElementById("successMessage").style.display = "block";
-                document.getElementById("noAttendanceMessage").style.display = "none";
-            } else {
-                document.getElementById("noAttendanceMessage").style.display = "block";
-                document.getElementById("successMessage").style.display = "none";
-            }
+//     var asistenciaField = document.querySelector('select[name="asistencia"]');
+//     if (asistenciaField) {
+//         formObject["asistencia"] = asistenciaField.value;
+//     }
 
-            document.getElementById("guestForm").reset();
+//     console.log(formObject);
+
+//     fetch("https://script.google.com/macros/s/AKfycbxbbcY5Ds_OFPx64oj4BjVXICHBh1M7EaYJN1f_v50qECAEdXE-cSI3h_xYl512ZmocXQ/exec", {
+//         method: "POST",
+//         body: new URLSearchParams(formObject),
+//         mode: 'no-cors',
+//     })
+//         .then(response => response.text())
+//         .then(data => {
+//             console.log(data);
 
 
-            setTimeout(function () {
-                document.getElementById("successMessage").style.display = "none";
-                document.getElementById("noAttendanceMessage").style.display = "none";
-            }, 3000);
-        })
-        .catch(error => {
-            console.error("Error:", error);
-        });
-});
+//             if (asistenciaValue === "Sí") {
+//                 document.getElementById("successMessage").style.display = "block";
+//                 document.getElementById("noAttendanceMessage").style.display = "none";
+//             } else {
+//                 document.getElementById("noAttendanceMessage").style.display = "block";
+//                 document.getElementById("successMessage").style.display = "none";
+//             }
+
+//             document.getElementById("guestForm").reset();
+
+
+//             setTimeout(function () {
+//                 document.getElementById("successMessage").style.display = "none";
+//                 document.getElementById("noAttendanceMessage").style.display = "none";
+//             }, 3000);
+//         })
+//         .catch(error => {
+//             console.error("Error:", error);
+//         });
+// });
 
 // Validacion de asistencia
-document.getElementById("asistencia").addEventListener("change", function () {
-    var asistenciaValue = this.value;
-    var formElements = document.querySelectorAll("#guestForm input, #guestForm select");
+// document.getElementById("asistencia").addEventListener("change", function () {
+//     var asistenciaValue = this.value;
+//     var formElements = document.querySelectorAll("#guestForm input, #guestForm select");
 
 
-    if (asistenciaValue === "Sí") {
-        formElements.forEach(function (element) {
-            element.disabled = false;
-        });
-    } else if (asistenciaValue === "No") {
+//     if (asistenciaValue === "Sí") {
+//         formElements.forEach(function (element) {
+//             element.disabled = false;
+//         });
+//     } else if (asistenciaValue === "No") {
 
-        formElements.forEach(function (element) {
-            if (element.name !== "nombre" && element.name !== "asistencia") {
-                element.disabled = true;
-            }
-        });
-    }
-});
+//         formElements.forEach(function (element) {
+//             if (element.name !== "nombre" && element.name !== "asistencia") {
+//                 element.disabled = true;
+//             }
+//         });
+//     }
+// });
 
 // Carrusel
 const images = [
@@ -146,12 +146,12 @@ const section = document.getElementById('hero-carousel');
 const bg = document.getElementById('carouselBg');
 
 function updateBackground() {
-    bg.style.opacity = 0; // Comienza el desvanecimiento
-
+    bg.style.opacity = 0;
     setTimeout(() => {
         bg.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('${images[currentIndex]}')`;
-        bg.style.opacity = 1; // Desvanece hacia la nueva imagen
-    }, 400); // Tiempo intermedio antes de mostrar la nueva imagen
+        bg.style.opacity = 1;
+        updateDots();
+    }, 400);
 }
 
 function nextImage() {
@@ -172,3 +172,219 @@ setInterval(nextImage, 5000);
 
 
 updateBackground();
+
+
+// Crear los puntos
+const dotsContainer = document.getElementById('carouselDots');
+
+
+images.forEach((_, index) => {
+    const dot = document.createElement('div');
+    dot.classList.add('carousel-dot');
+    if (index === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateBackground();
+        updateDots();
+    });
+    dotsContainer.appendChild(dot);
+});
+
+function updateDots() {
+    const dots = document.querySelectorAll('.carousel-dot');
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
+    });
+}
+
+// modal invitavion
+window.onload = function () {
+    const modal = document.getElementById('modal');
+    modal.style.display = 'flex'; // Mostrar el modal
+};
+
+document.getElementById('modal').addEventListener('click', function (event) {
+    const modalContent = document.querySelector('.modal-content');
+    if (!modalContent.contains(event.target)) {
+        document.getElementById('modal').style.display = 'none'; // Ocultar el modal
+        document.getElementById('openModalBtn').style.display = 'block'; // Mostrar el botón
+    }
+});
+
+document.getElementById('openModalBtn').addEventListener('click', function () {
+    document.getElementById('modal').style.display = 'flex'; // Mostrar el modal
+    document.getElementById('openModalBtn').style.display = 'none'; // Ocultar el botón
+});
+
+
+
+//invitaciones
+const getParam = (param) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+};
+
+const handleAsistenciaChange = (index) => {
+    const asistenciaSelect = document.querySelector(`select[name="asistencia${index}"]`);
+    const nombreInput = document.querySelector(`input[name="nombre${index}"]`);
+    const telefonoInput = document.querySelector(`input[name="telefono${index}"]`);
+    const licorSelect = document.querySelector(`select[name="licor${index}"]`);
+    const vegetarianoSelect = document.querySelector(`select[name="vegetariano${index}"]`);
+
+    if (asistenciaSelect.value === "No") {
+        // Bloquear campos si no asiste
+        nombreInput.disabled = false;
+        telefonoInput.disabled = true;
+        licorSelect.disabled = true;
+        vegetarianoSelect.disabled = true;
+    } else {
+        // Habilitar campos si asiste
+        nombreInput.disabled = false;
+        telefonoInput.disabled = false;
+        licorSelect.disabled = false;
+        vegetarianoSelect.disabled = false;
+    }
+};
+
+const loadNombreInvitado = async () => {
+    const id = getParam("id");
+    if (!id) return;
+
+    try {
+        const response = await fetch("https://opensheet.elk.sh/1VhCjyGa-xwFu3DwjkXyPOnhVUNZlg0n9v3v_aw_g7dM/invitados");
+        const data = await response.json();
+        console.log(data);
+
+        const invitado = data.find(row => row.id === id);
+        const cantidad = parseInt(invitado["cantidad"]);
+        const dynamicContainer = document.getElementById("dynamicGuests");
+        dynamicContainer.innerHTML = "";
+
+        if (invitado) {
+            document.getElementById("nombreInvitado").textContent = `${invitado["nombre para la tarjeta"]}`;
+            if (cantidad && dynamicContainer) {
+                for (let i = 1; i <= cantidad; i++) {
+                    const guestCard = document.createElement("div");
+                    guestCard.className = "form-row";
+                    guestCard.innerHTML = `
+                    <select class="full-width" name="asistencia${i}" required>
+                      <option disabled selected>¿Confirmará asistencia?</option>
+                      <option>Sí</option>
+                      <option>No</option>
+                    </select>
+                    <input type="text" name="nombre${i}" placeholder="Nombre invitado ${i}" required />
+                    <input type="number" name="telefono${i}" placeholder="Teléfono invitado ${i}" />
+                    <select name="licor${i}" required>
+                      <option disabled selected>¿Prefiere Ron o Guaro?</option>
+                      <option>Ron</option>
+                      <option>Guaro</option>
+                      <option>Ninguno</option>
+                    </select>
+                    <select name="vegetariano${i}" required>
+                      <option disabled selected>¿Desea opción vegetariana?</option>
+                      <option>Sí</option>
+                      <option>No</option>
+                    </select>
+                  `;
+                    dynamicContainer.appendChild(guestCard);
+
+                    // Agregar el event listener para cada select de asistencia
+                    const asistenciaSelect = guestCard.querySelector(`select[name="asistencia${i}"]`);
+                    asistenciaSelect.addEventListener("change", () => handleAsistenciaChange(i));
+                }
+            }
+        } else {
+            document.getElementById("nombreInvitado").textContent = "Querid@ invitado";
+        }
+    } catch (error) {
+        console.error("Error cargando nombres:", error);
+    }
+};
+
+window.addEventListener("DOMContentLoaded", loadNombreInvitado);
+
+// Envio formulario
+const sendFormData = async (formData) => {
+    const encodedData = new URLSearchParams(formData);
+
+    try {
+        fetch("https://script.google.com/macros/s/AKfycbyP2ue24nxJplwUrBl2at50RNXT9rkKXsiCZTak54CR5CBqDgEjq4jW-_oWY_6g0kJ97w/exec", {
+            method: "POST",
+            body: encodedData,
+            mode: "no-cors"
+        });
+
+        const entries = Object.entries(formData);
+        const asistenciaValues = entries.filter(([key, val]) => key.startsWith("asistencia") && val === "Sí");
+        const totalGuests = entries.filter(([key]) => key.startsWith("asistencia"));
+
+        if (asistenciaValues.length === totalGuests.length) {
+            document.getElementById("successMessage").style.display = "block";
+        } else if (asistenciaValues.length === 0) {
+            document.getElementById("noAttendanceMessage").style.display = "block";
+        } else {
+            document.getElementById("mixedAttendanceMessage").style.display = "block";
+        }
+
+        setTimeout(() => {
+            document.getElementById("successMessage").style.display = "none";
+            document.getElementById("noAttendanceMessage").style.display = "none";
+            document.getElementById("mixedAttendanceMessage").style.display = "none";
+        }, 3000);
+
+    } catch (error) {
+        console.error("Error al enviar los datos:", error);
+    }
+};
+
+
+// Formulario de envío
+document.getElementById("guestForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const selectsAsistencia = form.querySelectorAll("select[name^='asistencia']");
+    let allResponded = true;
+
+    selectsAsistencia.forEach((select) => {
+        if (!select.value || select.value === "¿Confirmará asistencia?") {
+            select.classList.add("error-border");
+            allResponded = false;
+        } else {
+            select.classList.remove("error-border");
+        }
+    });
+
+    const errorBox = document.getElementById("errorMessage");
+
+    if (!allResponded) {
+        errorBox.style.display = "block";
+        return;
+    } else {
+        errorBox.style.display = "none";
+    }
+
+    // Armar y enviar datos
+    const formData = new FormData(form);
+    const data = {};
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+
+    sendFormData(data);
+    form.reset();
+});
+
+
+function mostrarNombre(nombre) {
+    const nombreEl = document.getElementById("nombreInvitado");
+    nombreEl.textContent = nombre;
+
+
+    nombreEl.style.animation = 'none';
+    void nombreEl.offsetWidth;
+    nombreEl.style.animation = 'aparecerDesdeArriba 1s ease-out forwards';
+
+    document.getElementById("modal").style.display = "flex";
+}
+
