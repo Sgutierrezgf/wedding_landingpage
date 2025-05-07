@@ -35,9 +35,12 @@ const weddingDate = new Date("2025-08-16T15:00:00").getTime();
 const countdown = () => {
     const now = new Date().getTime();
     const distance = weddingDate - now;
+    // const distance = 0;
 
-    if (distance < 0) {
-        document.querySelector(".day-timer").innerHTML = "¡Ya llegó el gran día! 💍";
+    if (distance <= 0) {
+        const timerElement = document.querySelector(".day-timer");
+        timerElement.innerHTML = "¡Ya llegó el gran día! 💍";
+        timerElement.classList.add("wedding-day-message"); // 👈 nueva clase
         return;
     }
 
@@ -55,83 +58,6 @@ const countdown = () => {
 countdown();
 setInterval(countdown, 1000);
 
-// Envio de formulario
-// document.getElementById("guestForm").addEventListener("submit", function (event) {
-//     event.preventDefault();
-
-//     var asistenciaValue = document.querySelector('select[name="asistencia"]').value;
-
-
-//     if (asistenciaValue === "¿Vas a asistir a la boda?") {
-//         event.preventDefault();
-//         alert("Por favor, selecciona si asistirás o no a la boda.");
-//         return;
-//     }
-
-//     var formData = new FormData(this);
-//     var formObject = {};
-//     formData.forEach(function (value, key) {
-//         formObject[key] = value;
-//     });
-
-
-//     var asistenciaField = document.querySelector('select[name="asistencia"]');
-//     if (asistenciaField) {
-//         formObject["asistencia"] = asistenciaField.value;
-//     }
-
-//     console.log(formObject);
-
-//     fetch("https://script.google.com/macros/s/AKfycbxbbcY5Ds_OFPx64oj4BjVXICHBh1M7EaYJN1f_v50qECAEdXE-cSI3h_xYl512ZmocXQ/exec", {
-//         method: "POST",
-//         body: new URLSearchParams(formObject),
-//         mode: 'no-cors',
-//     })
-//         .then(response => response.text())
-//         .then(data => {
-//             console.log(data);
-
-
-//             if (asistenciaValue === "Sí") {
-//                 document.getElementById("successMessage").style.display = "block";
-//                 document.getElementById("noAttendanceMessage").style.display = "none";
-//             } else {
-//                 document.getElementById("noAttendanceMessage").style.display = "block";
-//                 document.getElementById("successMessage").style.display = "none";
-//             }
-
-//             document.getElementById("guestForm").reset();
-
-
-//             setTimeout(function () {
-//                 document.getElementById("successMessage").style.display = "none";
-//                 document.getElementById("noAttendanceMessage").style.display = "none";
-//             }, 3000);
-//         })
-//         .catch(error => {
-//             console.error("Error:", error);
-//         });
-// });
-
-// Validacion de asistencia
-// document.getElementById("asistencia").addEventListener("change", function () {
-//     var asistenciaValue = this.value;
-//     var formElements = document.querySelectorAll("#guestForm input, #guestForm select");
-
-
-//     if (asistenciaValue === "Sí") {
-//         formElements.forEach(function (element) {
-//             element.disabled = false;
-//         });
-//     } else if (asistenciaValue === "No") {
-
-//         formElements.forEach(function (element) {
-//             if (element.name !== "nombre" && element.name !== "asistencia") {
-//                 element.disabled = true;
-//             }
-//         });
-//     }
-// });
 
 // Carrusel
 const images = [
@@ -335,7 +261,7 @@ const sendFormData = async (formData) => {
             document.getElementById("successMessage").style.display = "none";
             document.getElementById("noAttendanceMessage").style.display = "none";
             document.getElementById("mixedAttendanceMessage").style.display = "none";
-        }, 3000);
+        }, 5000);
 
     } catch (error) {
         console.error("Error al enviar los datos:", error);
@@ -349,24 +275,46 @@ document.getElementById("guestForm").addEventListener("submit", (e) => {
 
     const form = e.target;
     const selectsAsistencia = form.querySelectorAll("select[name^='asistencia']");
-    let allResponded = true;
+    let allValid = true;
 
-    selectsAsistencia.forEach((select) => {
-        if (!select.value || select.value === "¿Confirmará asistencia?") {
+    const errorBox = document.getElementById("errorMessage");
+    errorBox.style.display = "none";
+
+    selectsAsistencia.forEach((select, index) => {
+        const i = index + 1;
+        const asistencia = select.value;
+
+        const telefono = form.querySelector(`input[name="telefono${i}"]`);
+        const licor = form.querySelector(`select[name="licor${i}"]`);
+        const vegetariano = form.querySelector(`select[name="vegetariano${i}"]`);
+
+        // Reset errores anteriores
+        [select, telefono, licor, vegetariano].forEach(el => el.classList.remove("error-border"));
+
+        if (!asistencia || asistencia === "¿Confirmará asistencia?") {
             select.classList.add("error-border");
-            allResponded = false;
-        } else {
-            select.classList.remove("error-border");
+            allValid = false;
+        }
+
+        if (asistencia === "Sí") {
+            if (!telefono.value.trim()) {
+                telefono.classList.add("error-border");
+                allValid = false;
+            }
+            if (!licor.value || licor.selectedIndex === 0) {
+                licor.classList.add("error-border");
+                allValid = false;
+            }
+            if (!vegetariano.value || vegetariano.selectedIndex === 0) {
+                vegetariano.classList.add("error-border");
+                allValid = false;
+            }
         }
     });
 
-    const errorBox = document.getElementById("errorMessage");
-
-    if (!allResponded) {
+    if (!allValid) {
         errorBox.style.display = "block";
         return;
-    } else {
-        errorBox.style.display = "none";
     }
 
     // Armar y enviar datos
@@ -375,12 +323,14 @@ document.getElementById("guestForm").addEventListener("submit", (e) => {
     formData.forEach((value, key) => {
         data[key] = value;
     });
+    data["id"] = getParam("id");
 
     sendFormData(data);
     form.reset();
 });
 
 
+// Nombre en invitacion
 function mostrarNombre(nombre) {
     const nombreEl = document.getElementById("nombreInvitado");
     nombreEl.textContent = nombre;
