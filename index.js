@@ -211,7 +211,7 @@ const loadNombreInvitado = async () => {
                 cantidadEl.classList.add("grande");
             }
             nombreEl.textContent = invitado["nombre para la tarjeta"];
-            cantidadEl.textContent = `Cantidad de invitados: ${cantidad}`;
+            cantidadEl.textContent = `(Cantidad de invitados: ${cantidad})`;
             if (cantidad && dynamicContainer) {
                 for (let i = 1; i <= cantidad; i++) {
                     const guestCard = document.createElement("div");
