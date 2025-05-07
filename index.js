@@ -1,3 +1,12 @@
+
+const userId = (() => {
+    const params = new URLSearchParams(window.location.search);
+    const value = params.get("id");
+    if (value) {
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+    return value;
+})();
 // Scroll del header
 window.onscroll = function () {
     const header = document.getElementById('header');
@@ -178,78 +187,116 @@ const handleAsistenciaChange = (index) => {
 };
 
 const loadNombreInvitado = async () => {
-    const id = getParam("id");
-    if (!id) return;
+    const id = userId;
+    const nombreEl = document.getElementById("nombreInvitado");
+    const cantidadEl = document.getElementById("nombreCantidad");
+    const dynamicContainer = document.getElementById("dynamicGuests");
+    const yaRespondioMensaje = document.getElementById("yaRespondioMensaje");
+    const guestForm = document.getElementById("guestForm");
+
+    // Mostrar mensaje genérico si no hay ID
+    if (!id) {
+        nombreEl.textContent = "Querido invitado";
+        cantidadEl.textContent = "";
+        nombreEl.classList.add("pequeno");
+        cantidadEl.classList.add("pequeno");
+        guestForm.style.display = "none";
+        yaRespondioMensaje.style.display = "block";
+        yaRespondioMensaje.textContent = "Lo sentimos, no estás en la lista de invitados. Pero puedes ver el resto del contenido.";
+        return;
+    }
 
     try {
-        const response = await fetch("https://opensheet.elk.sh/1VhCjyGa-xwFu3DwjkXyPOnhVUNZlg0n9v3v_aw_g7dM/invitados");
-        const data = await response.json();
-        console.log(data);
+        // Cargar lista de invitados
+        const invitadosResp = await fetch("https://opensheet.elk.sh/1VhCjyGa-xwFu3DwjkXyPOnhVUNZlg0n9v3v_aw_g7dM/invitados");
+        const invitadosData = await invitadosResp.json();
+        const invitado = invitadosData.find(row => row.id === id);
 
-        const invitado = data.find(row => row.id === id);
+        if (!invitado) {
+            nombreEl.textContent = "Querido invitado";
+            cantidadEl.textContent = "";
+            nombreEl.classList.add("pequeno");
+            cantidadEl.classList.add("pequeno");
+            guestForm.style.display = "none";
+            yaRespondioMensaje.style.display = "block";
+            yaRespondioMensaje.textContent = "Lo sentimos, no estás en la lista de invitados. Pero puedes ver el resto del contenido.";
+            return;
+        }
+
+        // Mostrar nombre y cantidad
         const cantidad = parseInt(invitado["cantidad"]);
-        const dynamicContainer = document.getElementById("dynamicGuests");
+        nombreEl.classList.remove("pequeno", "mediano", "grande");
+        cantidadEl.classList.remove("pequeno", "mediano", "grande");
+
+        if (cantidad <= 1) {
+            nombreEl.classList.add("pequeno");
+            cantidadEl.classList.add("pequeno");
+        } else if (cantidad === 2) {
+            nombreEl.classList.add("mediano");
+            cantidadEl.classList.add("mediano");
+        } else {
+            nombreEl.classList.add("grande");
+            cantidadEl.classList.add("grande");
+        }
+
+        nombreEl.textContent = invitado["nombre para la tarjeta"];
+        cantidadEl.textContent = `(Cantidad de invitados: ${cantidad})`;
+
+        // Verificar si ya respondió
+        const respuestasResp = await fetch("https://opensheet.elk.sh/1VhCjyGa-xwFu3DwjkXyPOnhVUNZlg0n9v3v_aw_g7dM/Respuestas");
+        const respuestasData = await respuestasResp.json();
+        const yaRespondio = respuestasData.some(row => row.id && String(row.id) === String(id));
+
+        if (yaRespondio) {
+            yaRespondioMensaje.style.display = "block";
+            guestForm.style.display = "none";
+            document.querySelectorAll("#guestForm input, #guestForm select, #guestForm button").forEach(el => el.disabled = true);
+            guestForm.reset();
+            return;
+        }
+
+        // Si no ha respondido, mostrar el formulario dinámico
         dynamicContainer.innerHTML = "";
 
-        if (invitado) {
-            const nombreEl = document.getElementById("nombreInvitado");
-            const cantidadEl = document.getElementById("nombreCantidad");
-
-
-            nombreEl.classList.remove("pequeno", "mediano", "grande");
-            cantidadEl.classList.remove("pequeno", "mediano", "grande");
-
-
-            if (cantidad <= 1) {
-                nombreEl.classList.add("pequeno");
-                cantidadEl.classList.add("pequeno");
-            } else if (cantidad === 2) {
-                nombreEl.classList.add("mediano");
-                cantidadEl.classList.add("mediano");
-            } else {
-                nombreEl.classList.add("grande");
-                cantidadEl.classList.add("grande");
-            }
-            nombreEl.textContent = invitado["nombre para la tarjeta"];
-            cantidadEl.textContent = `(Cantidad de invitados: ${cantidad})`;
-            if (cantidad && dynamicContainer) {
-                for (let i = 1; i <= cantidad; i++) {
-                    const guestCard = document.createElement("div");
-                    guestCard.className = "form-row";
-                    guestCard.innerHTML = `
-                    <select class="full-width" name="asistencia${i}" required>
-                      <option disabled selected>¿Confirmará asistencia?</option>
-                      <option>Sí</option>
-                      <option>No</option>
-                    </select>
-                    <input type="text" name="nombre${i}" placeholder="Nombre invitado ${i}" required />
-                    <input type="number" name="telefono${i}" placeholder="Teléfono invitado ${i}" />
-                    <select name="licor${i}" required>
-                      <option disabled selected>¿Prefiere Ron o Guaro?</option>
-                      <option>Ron</option>
-                      <option>Guaro</option>
-                      <option>Ninguno</option>
-                    </select>
-                    <select name="vegetariano${i}" required>
-                      <option disabled selected>¿Desea opción vegetariana?</option>
-                      <option>Sí</option>
-                      <option>No</option>
-                    </select>
-                  `;
-                    dynamicContainer.appendChild(guestCard);
-
-                    // Agregar el event listener para cada select de asistencia
-                    const asistenciaSelect = guestCard.querySelector(`select[name="asistencia${i}"]`);
-                    asistenciaSelect.addEventListener("change", () => handleAsistenciaChange(i));
-                }
-            }
-        } else {
-            document.getElementById("nombreInvitado").textContent = "Querid@ invitado";
+        for (let i = 1; i <= cantidad; i++) {
+            const guestCard = document.createElement("div");
+            guestCard.className = "form-row";
+            guestCard.innerHTML = `
+                <select class="full-width" name="asistencia${i}" required>
+                  <option disabled selected>¿Confirmará asistencia?</option>
+                  <option>Sí</option>
+                  <option>No</option>
+                </select>
+                <input type="text" name="nombre${i}" placeholder="Nombre invitado ${i}" required />
+                <input type="number" name="telefono${i}" placeholder="Teléfono invitado ${i}" />
+                <select name="licor${i}" required>
+                  <option disabled selected>¿Prefiere Ron o Guaro?</option>
+                  <option>Ron</option>
+                  <option>Guaro</option>
+                  <option>Ninguno</option>
+                </select>
+                <select name="vegetariano${i}" required>
+                  <option disabled selected>¿Desea opción vegetariana?</option>
+                  <option>Sí</option>
+                  <option>No</option>
+                </select>
+            `;
+            dynamicContainer.appendChild(guestCard);
+            guestCard.querySelector(`select[name="asistencia${i}"]`)
+                .addEventListener("change", () => handleAsistenciaChange(i));
         }
+
     } catch (error) {
-        console.error("Error cargando nombres:", error);
+        console.error("Error:", error);
+        nombreEl.textContent = "Querido invitado";
+        cantidadEl.textContent = "";
+        guestForm.style.display = "none";
+        yaRespondioMensaje.style.display = "block";
+        yaRespondioMensaje.textContent = "Lo sentimos, ocurrió un error al cargar la información.";
     }
 };
+
+
 
 window.addEventListener("DOMContentLoaded", loadNombreInvitado);
 
@@ -268,6 +315,11 @@ const sendFormData = async (formData) => {
         const asistenciaValues = entries.filter(([key, val]) => key.startsWith("asistencia") && val === "Sí");
         const totalGuests = entries.filter(([key]) => key.startsWith("asistencia"));
 
+        // Ocultar el formulario
+        const form = document.getElementById("guestForm");
+        form.style.display = "none";
+
+        // Mostrar mensaje según respuesta
         if (asistenciaValues.length === totalGuests.length) {
             document.getElementById("successMessage").style.display = "block";
         } else if (asistenciaValues.length === 0) {
@@ -276,11 +328,12 @@ const sendFormData = async (formData) => {
             document.getElementById("mixedAttendanceMessage").style.display = "block";
         }
 
+        // ✅ Ocultar mensajes luego de unos segundos (opcional)
         setTimeout(() => {
             document.getElementById("successMessage").style.display = "none";
             document.getElementById("noAttendanceMessage").style.display = "none";
             document.getElementById("mixedAttendanceMessage").style.display = "none";
-        }, 5000);
+        }, 10000); // Aumenté a 10s para que dé tiempo a leer
 
     } catch (error) {
         console.error("Error al enviar los datos:", error);
@@ -342,10 +395,10 @@ document.getElementById("guestForm").addEventListener("submit", (e) => {
     formData.forEach((value, key) => {
         data[key] = value;
     });
-    data["id"] = getParam("id");
+    data["id"] = userId;
 
     sendFormData(data);
-    form.reset();
+    // form.reset();
 });
 
 
