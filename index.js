@@ -192,7 +192,26 @@ const loadNombreInvitado = async () => {
         dynamicContainer.innerHTML = "";
 
         if (invitado) {
-            document.getElementById("nombreInvitado").textContent = `${invitado["nombre para la tarjeta"]}`;
+            const nombreEl = document.getElementById("nombreInvitado");
+            const cantidadEl = document.getElementById("nombreCantidad");
+
+
+            nombreEl.classList.remove("pequeno", "mediano", "grande");
+            cantidadEl.classList.remove("pequeno", "mediano", "grande");
+
+
+            if (cantidad <= 1) {
+                nombreEl.classList.add("pequeno");
+                cantidadEl.classList.add("pequeno");
+            } else if (cantidad === 2) {
+                nombreEl.classList.add("mediano");
+                cantidadEl.classList.add("mediano");
+            } else {
+                nombreEl.classList.add("grande");
+                cantidadEl.classList.add("grande");
+            }
+            nombreEl.textContent = invitado["nombre para la tarjeta"];
+            cantidadEl.textContent = `Cantidad de invitados: ${cantidad}`;
             if (cantidad && dynamicContainer) {
                 for (let i = 1; i <= cantidad; i++) {
                     const guestCard = document.createElement("div");
@@ -333,6 +352,7 @@ document.getElementById("guestForm").addEventListener("submit", (e) => {
 // Nombre en invitacion
 function mostrarNombre(nombre) {
     const nombreEl = document.getElementById("nombreInvitado");
+    const cantidadInvitados = document.getElementById("nombreCantidad");
     nombreEl.textContent = nombre;
 
 
