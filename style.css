@@ -1255,7 +1255,7 @@ nav ul li a:hover {
     width: 100%;
     transform: translateX(-50%);
     color: #1e7b67;
-    font-size: clamp(1.5rem, 5vw, 3rem);
+    font-size: clamp(1.5rem, 6vw, 3.5rem);
     font-family: 'Great Vibes', cursive;
     padding: 12px 24px;
     border-radius: 12px;
