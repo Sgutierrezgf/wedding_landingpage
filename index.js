@@ -1,4 +1,3 @@
-
 const userId = (() => {
     const params = new URLSearchParams(window.location.search);
     const value = params.get("id");
@@ -282,8 +281,20 @@ const loadNombreInvitado = async () => {
                 </select>
             `;
             dynamicContainer.appendChild(guestCard);
-            guestCard.querySelector(`select[name="asistencia${i}"]`)
-                .addEventListener("change", () => handleAsistenciaChange(i));
+            const asistenciaSelect = guestCard.querySelector(`select[name="asistencia${i}"]`);
+            asistenciaSelect.addEventListener("change", () => handleAsistenciaChange(i));
+
+            // Validación en tiempo real para nombre
+            const nombreInput = guestCard.querySelector(`input[name="nombre${i}"]`);
+            nombreInput.addEventListener("input", () => {
+                nombreInput.value = nombreInput.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, "");
+            });
+
+            // Validación en tiempo real para teléfono
+            const telefonoInput = guestCard.querySelector(`input[name="telefono${i}"]`);
+            telefonoInput.addEventListener("input", () => {
+                telefonoInput.value = telefonoInput.value.replace(/\D/g, "").slice(0, 10);
+            });
         }
 
     } catch (error) {
@@ -369,9 +380,10 @@ document.getElementById("guestForm").addEventListener("submit", (e) => {
         }
 
         if (asistencia === "Sí") {
-            if (!telefono.value.trim()) {
+            if (!telefono.value.trim() || telefono.value.length !== 10) {
                 telefono.classList.add("error-border");
                 allValid = false;
+                errorBox.innerText = "Por favor, asegúrate de que el número telefónico tenga exactamente 10 dígitos.";
             }
             if (!licor.value || licor.selectedIndex === 0) {
                 licor.classList.add("error-border");
